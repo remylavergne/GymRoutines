@@ -38,7 +38,7 @@ android {
     }
 
     buildFeatures {
-        compose = false
+        compose = true
         dataBinding = true
     }
 
@@ -91,6 +91,8 @@ dependencies {
 
     // Compose
     implementation "androidx.ui:ui-tooling:$compose_version"
+    implementation "androidx.compose.foundation:foundation:$compose_version"
+    implementation "androidx.compose.material:material:$compose_version"
 
     // Compose-Router
     // TODO
