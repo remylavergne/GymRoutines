@@ -2,7 +2,6 @@ package com.noahjutz.gymroutines.data.domain
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.noahjutz.gymroutines.util.Equatable
 
 /**
  * Utility class hierarchy:
@@ -45,4 +44,4 @@ data class FullRoutine(
         parentColumn = "routineId",
         entityColumn = "routineId"
     ) val exercises: List<ExerciseImpl>
-) : Equatable
+)

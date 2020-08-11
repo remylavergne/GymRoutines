@@ -2,7 +2,6 @@ package com.noahjutz.gymroutines.data.domain
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.noahjutz.gymroutines.util.Equatable
 
 /**
  * [ExerciseHolder] with [Exercise] and [Set]s
@@ -19,4 +18,4 @@ data class ExerciseImpl(
         parentColumn = "exerciseHolderId",
         entityColumn = "exerciseHolderId"
     ) var sets: List<Set>
-) : Equatable
+)
