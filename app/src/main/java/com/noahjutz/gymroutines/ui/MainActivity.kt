@@ -7,8 +7,8 @@ import androidx.compose.foundation.Text
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.DirectionsRun
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.ViewAgenda
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.state
@@ -51,6 +51,9 @@ fun Main() {
                     label = { Text("Exercises") }
                 )
             }
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = {}, icon = { Icon(Icons.Filled.Add) })
         },
         bodyContent = {
             when (screen.value) {
