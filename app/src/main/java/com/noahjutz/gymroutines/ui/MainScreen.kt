@@ -12,6 +12,7 @@ import androidx.compose.runtime.state
 import androidx.lifecycle.LiveData
 import com.noahjutz.gymroutines.data.domain.Exercise
 import com.noahjutz.gymroutines.data.domain.FullRoutine
+import com.noahjutz.gymroutines.data.domain.Routine
 
 enum class TopLevelDestinations { Routines, Exercises }
 
@@ -43,7 +44,11 @@ fun Main(
             }
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = {}, icon = { Icon(Icons.Filled.Add) })
+            FloatingActionButton(onClick = {
+                if (screen.value == TopLevelDestinations.Routines)
+                    editRoutine(FullRoutine(Routine(), emptyList()))
+                else editExercise(Exercise())
+            }, icon = { Icon(Icons.Filled.Add) })
         },
         bodyContent = {
             when (screen.value) {
