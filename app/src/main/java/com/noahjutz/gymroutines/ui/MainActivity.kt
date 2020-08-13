@@ -54,12 +54,8 @@ fun Main() {
         },
         bodyContent = {
             when (screen.value) {
-                TopLevelDestinations.Routines -> {
-                    Text("Routines")
-                }
-                TopLevelDestinations.Exercises -> {
-                    Text("Exercises")
-                }
+                TopLevelDestinations.Routines -> RoutinesScreen()
+                TopLevelDestinations.Exercises -> ExercisesScreen()
             }
         }
     )
