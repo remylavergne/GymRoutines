@@ -18,8 +18,11 @@ enum class TopLevelDestinations { Routines, Exercises }
 @Composable
 fun Main(
     routines: LiveData<List<FullRoutine>>,
-    exercises: LiveData<List<Exercise>>
+    exercises: LiveData<List<Exercise>>,
+    editRoutine: (FullRoutine) -> Unit,
+    editExercise: (Exercise) -> Unit
 ) {
+    // TODO: Use compose-router here
     val screen = state { TopLevelDestinations.Routines }
     Scaffold(
         topBar = { TopAppBar(title = { Text("Title") }) },
@@ -44,8 +47,8 @@ fun Main(
         },
         bodyContent = {
             when (screen.value) {
-                TopLevelDestinations.Routines -> RoutinesScreen(routines)
-                TopLevelDestinations.Exercises -> ExercisesScreen(exercises)
+                TopLevelDestinations.Routines -> RoutinesScreen(routines, editRoutine)
+                TopLevelDestinations.Exercises -> ExercisesScreen(exercises, editExercise)
             }
         }
     )

@@ -9,10 +9,11 @@ import com.noahjutz.gymroutines.data.domain.FullRoutine
 
 @Composable
 fun RoutinesScreen(
-    routines: LiveData<List<FullRoutine>>
+    routines: LiveData<List<FullRoutine>>,
+    editRoutine: (FullRoutine) -> Unit
 ) {
     val routinesList = routines.observeAsState()
     LazyColumnFor(items = routinesList.value ?: emptyList()) { routine ->
-        ListItem(text = routine.routine.name, onClick = {})
+        ListItem(text = routine.routine.name, onClick = { editRoutine(routine) })
     }
 }

@@ -9,10 +9,11 @@ import com.noahjutz.gymroutines.data.domain.Exercise
 
 @Composable
 fun ExercisesScreen(
-    exercises: LiveData<List<Exercise>>
+    exercises: LiveData<List<Exercise>>,
+    editExercise: (Exercise) -> Unit
 ) {
     val exerciseList = exercises.observeAsState()
     LazyColumnFor(items = exerciseList.value?.filter { !it.hidden } ?: emptyList()) { exercise ->
-        ListItem(text = exercise.name, onClick = {})
+        ListItem(text = exercise.name, onClick = { editExercise(exercise) })
     }
 }
