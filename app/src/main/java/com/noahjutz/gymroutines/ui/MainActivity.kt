@@ -66,8 +66,14 @@ fun Content(
                 editRoutine = { backStack.push(Routing.EditRoutine(it)) },
                 editExercise = { backStack.push(Routing.EditExercise(it)) }
             )
-            is Routing.EditExercise -> Surface { Text(routing.exercise.name) }
-            is Routing.EditRoutine -> Surface { Text(routing.routine.routine.name) }
+            is Routing.EditExercise -> EditExercise(
+                exercise = routing.exercise,
+                navBack = { backStack.pop() }
+            )
+            is Routing.EditRoutine -> EditRoutine(
+                routine = routing.routine,
+                navBack = { backStack.pop() }
+            )
         }
     }
 }
