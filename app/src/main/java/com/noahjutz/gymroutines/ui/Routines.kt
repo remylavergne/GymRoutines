@@ -1,19 +1,18 @@
 package com.noahjutz.gymroutines.ui
 
-import androidx.compose.foundation.Text
-import androidx.compose.material.MaterialTheme
+import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.material.ListItem
 import androidx.compose.runtime.Composable
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.lifecycle.LiveData
+import com.noahjutz.gymroutines.data.domain.FullRoutine
 
 @Composable
-fun RoutinesScreen() {
-    Text("Routines")
-}
-
-@Composable
-@Preview
-fun PreviewRoutinesScreen() {
-    MaterialTheme {
-        RoutinesScreen()
+fun RoutinesScreen(
+    routines: LiveData<List<FullRoutine>>
+) {
+    val routinesList = routines.observeAsState()
+    LazyColumnFor(items = routinesList.value ?: emptyList()) { routine ->
+        ListItem(text = routine.routine.name, onClick = {})
     }
 }
