@@ -101,7 +101,7 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
 
     // Compose-Router
-    implementation 'com.github.zsoltk:compose-router:0.15.1'
+    implementation 'com.github.zsoltk:compose-router:0.16.0'
 
     // Material Design
     implementation 'com.google.android.material:material:1.2.0'
