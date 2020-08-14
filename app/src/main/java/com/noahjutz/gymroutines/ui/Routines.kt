@@ -14,6 +14,10 @@ fun RoutinesScreen(
 ) {
     val routinesList = routines.observeAsState()
     LazyColumnFor(items = routinesList.value ?: emptyList()) { routine ->
-        ListItem(text = routine.routine.name, onClick = { editRoutine(routine) })
+        ListItem(
+            text = routine.routine.name,
+            secondaryText = routine.routine.description.let { if (it.isEmpty()) null else it },
+            onClick = { editRoutine(routine) }
+        )
     }
 }
