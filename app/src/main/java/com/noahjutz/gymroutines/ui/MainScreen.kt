@@ -26,7 +26,7 @@ fun Main(
     // TODO: Use compose-router here
     val screen = state { TopLevelDestinations.Routines }
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Title") }) },
+        topBar = { TopAppBar(title = { Text("GymRoutines") }) },
         bottomBar = {
             BottomNavigation {
                 BottomNavigationItem(
