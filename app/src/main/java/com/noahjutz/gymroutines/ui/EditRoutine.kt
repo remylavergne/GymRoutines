@@ -1,18 +1,22 @@
 package com.noahjutz.gymroutines.ui
 
 import androidx.compose.foundation.Icon
+import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.lazy.LazyColumnForIndexed
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.noahjutz.gymroutines.data.domain.ExerciseImpl
@@ -45,6 +49,7 @@ fun EditRoutine(
     )
 }
 
+@Suppress("NAME_SHADOWING")
 @Composable
 private fun BodyContent(
     name: String,
@@ -53,7 +58,7 @@ private fun BodyContent(
 ) {
     val name = state { name }
     val description = state { description }
-    Column {
+    ScrollableColumn { // TODO: fix performance issues
         TextField(
             value = name.value,
             onValueChange = { name.value = it },
@@ -85,9 +90,22 @@ private fun BodyContent(
                             secondaryText = set.toString(),
                             onClick = {})
                     }
+                    Row(modifier= Modifier.gravity(Alignment.End)) {
+                        IconButton(
+                            icon = { Icon(Icons.Filled.Add) },
+                            onClick = {},
+                            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                        )
+                    }
                 }
             }
         }
+        Button(
+            content = { Text("Add Exercise") },
+            onClick = {},
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                .gravity(Alignment.CenterHorizontally)
+        )
     }
 }
 
