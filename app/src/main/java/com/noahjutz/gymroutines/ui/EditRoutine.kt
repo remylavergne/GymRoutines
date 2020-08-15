@@ -65,7 +65,7 @@ private fun BodyContent(
             label = { Text("Name") },
             modifier = Modifier.padding(16.dp).fillMaxWidth()
         )
-        TextField(
+        OutlinedTextField(
             value = description.value,
             onValueChange = { description.value = it },
             label = { Text("Description") },
