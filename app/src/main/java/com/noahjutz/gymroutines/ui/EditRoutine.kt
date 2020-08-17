@@ -20,17 +20,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.noahjutz.gymroutines.data.domain.ExerciseImpl
-import com.noahjutz.gymroutines.data.domain.FullRoutine
 
 @Composable
 fun EditRoutine(
-    routine: FullRoutine,
     navBack: () -> Unit
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(routine.routine.name) },
+                title = { Text("Edit Routine") },
                 navigationIcon = {
                     IconButton(
                         onClick = navBack,
@@ -40,24 +38,16 @@ fun EditRoutine(
             )
         },
         bodyContent = {
-            BodyContent(
-                name = routine.routine.name,
-                description = routine.routine.description,
-                exercises = routine.exercises
-            )
+            BodyContent()
         }
     )
 }
 
 @Suppress("NAME_SHADOWING")
 @Composable
-private fun BodyContent(
-    name: String,
-    description: String,
-    exercises: List<ExerciseImpl>
-) {
-    val name = state { name }
-    val description = state { description }
+private fun BodyContent() {
+    val name = state { "" } // TODO real data source
+    val description = state { "" } // TODO real data source
     ScrollableColumn { // TODO: fix performance issues
         TextField(
             value = name.value,
@@ -73,7 +63,7 @@ private fun BodyContent(
         )
         Divider(modifier = Modifier.padding(bottom = 16.dp))
         LazyColumnFor(
-            items = exercises,
+            items = emptyList<ExerciseImpl>(), // TODO real data source
             modifier = Modifier.padding(start = 16.dp, end = 16.dp)
         ) { exercise ->
             Card(
@@ -90,7 +80,7 @@ private fun BodyContent(
                             secondaryText = set.toString(),
                             onClick = {})
                     }
-                    Row(modifier= Modifier.gravity(Alignment.End)) {
+                    Row(modifier = Modifier.gravity(Alignment.End)) {
                         IconButton(
                             icon = { Icon(Icons.Filled.Add) },
                             onClick = {},

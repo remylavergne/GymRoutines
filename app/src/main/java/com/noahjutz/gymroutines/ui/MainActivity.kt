@@ -18,6 +18,7 @@ import com.github.zsoltk.compose.backpress.BackPressHandler
 import com.github.zsoltk.compose.router.Router
 import com.noahjutz.gymroutines.data.domain.Exercise
 import com.noahjutz.gymroutines.data.domain.FullRoutine
+import com.noahjutz.gymroutines.util.ArgsStorage
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "MainActivity"
@@ -70,10 +71,10 @@ fun Content(
                 exercise = routing.exercise,
                 navBack = { backStack.pop() }
             )
-            is Routing.EditRoutine -> EditRoutine(
-                routine = routing.routine,
-                navBack = { backStack.pop() }
-            )
+            is Routing.EditRoutine -> {
+                ArgsStorage.args["routineId"] = routing.routine.routine.routineId
+                EditRoutine(navBack = { backStack.pop() })
+            }
         }
     }
 }
