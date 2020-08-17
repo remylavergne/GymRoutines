@@ -9,5 +9,5 @@ import com.noahjutz.gymroutines.util.ArgsStorage
 class EditRoutineViewModel @ViewModelInject constructor(private val repository: Repository) :
     ViewModel() {
     val routine: FullRoutine
-        get() = repository.getFullRoutine(ArgsStorage.args["routineId"] as Int)!!
+        get() = repository.getFullRoutine(ArgsStorage.args[ArgsStorage.Keys.ROUTINE_ID] as Int)!!
 }

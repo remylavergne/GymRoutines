@@ -10,7 +10,6 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Providers
 import androidx.compose.ui.platform.setContent
-import androidx.compose.ui.util.identityHashCode
 import com.github.zsoltk.compose.backpress.AmbientBackPressHandler
 import com.github.zsoltk.compose.backpress.BackPressHandler
 import com.github.zsoltk.compose.router.Router
@@ -79,14 +78,14 @@ fun Content(
                 navTo = { backStack.push(it) }
             )
             is Routing.EditExercise -> {
-                ArgsStorage.args["exerciseId"] = routing.exercise.exerciseId // TODO save as constant
+                ArgsStorage.args[ArgsStorage.Keys.EXERCISE_ID] = routing.exercise.exerciseId
                 EditExercise(
                     viewModel = editExerciseViewModel,
                     navBack = { backStack.pop() }
                 )
             }
             is Routing.EditRoutine -> {
-                ArgsStorage.args["routineId"] = routing.routine.routine.routineId // TODO save as constant
+                ArgsStorage.args[ArgsStorage.Keys.ROUTINE_ID] = routing.routine.routine.routineId
                 EditRoutine(
                     viewModel = editRoutineViewModel,
                     navBack = { backStack.pop() }
