@@ -14,7 +14,7 @@ fun RoutinesScreen(
     val routinesList = viewModel.routines.observeAsState()
     LazyColumnFor(items = routinesList.value ?: emptyList()) { routine ->
         ListItem(
-            text = routine.routine.name,
+            text = routine.routine.name.takeIf { it.isNotBlank() } ?: "Unnamed",
             secondaryText = routine.routine.description.let { if (it.isEmpty()) null else it },
             onClick = { navTo(Routing.EditRoutine(routine)) }
         )
