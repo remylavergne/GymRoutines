@@ -21,10 +21,9 @@ enum class TopLevelDestinations { Routines, Exercises }
 
 @Composable
 fun Main(
-    editRoutine: (FullRoutine) -> Unit,
-    editExercise: (Exercise) -> Unit,
     routinesViewModel: RoutinesViewModel,
-    exercisesViewModel: ExercisesViewModel
+    exercisesViewModel: ExercisesViewModel,
+    navTo: (Routing) -> Unit
 ) {
     // TODO: Use compose-router here?
     val screen = state { TopLevelDestinations.Routines }
@@ -49,14 +48,14 @@ fun Main(
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 if (screen.value == TopLevelDestinations.Routines)
-                    editRoutine(FullRoutine(Routine(), emptyList()))
-                else editExercise(Exercise())
+                    navTo(Routing.EditRoutine(FullRoutine(Routine(), emptyList())))
+                else navTo(Routing.EditExercise(Exercise()))
             }, icon = { Icon(Icons.Filled.Add) })
         },
         bodyContent = {
             when (screen.value) {
-                TopLevelDestinations.Routines -> RoutinesScreen(routinesViewModel, editRoutine)
-                TopLevelDestinations.Exercises -> ExercisesScreen(exercisesViewModel, editExercise)
+                TopLevelDestinations.Routines -> RoutinesScreen(routinesViewModel, navTo)
+                TopLevelDestinations.Exercises -> ExercisesScreen(exercisesViewModel, navTo)
             }
         }
     )

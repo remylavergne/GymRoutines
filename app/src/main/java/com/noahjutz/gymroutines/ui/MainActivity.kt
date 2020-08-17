@@ -71,8 +71,7 @@ fun Content(
             is Routing.MainScreen -> Main(
                 routinesViewModel = routinesViewModel,
                 exercisesViewModel = exercisesViewModel,
-                editRoutine = { backStack.push(Routing.EditRoutine(it)) }, // TODO: replace with generic navigate function
-                editExercise = { backStack.push(Routing.EditExercise(it)) }
+                navTo = { backStack.push(it) }
             )
             is Routing.EditExercise -> EditExercise(
                 exercise = routing.exercise, // TODO: Replace with viewModel
