@@ -20,13 +20,13 @@ import com.noahjutz.gymroutines.data.domain.Exercise
 
 @Composable
 fun EditExercise(
-    exercise: Exercise,
+    viewModel: EditExerciseViewModel,
     navBack: () -> Unit
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(exercise.name) },
+                title = { Text(viewModel.exercise.name) },
                 navigationIcon = {
                     IconButton(
                         onClick = navBack,
@@ -36,7 +36,7 @@ fun EditExercise(
             )
         },
         bodyContent = {
-            BodyContent(exercise)
+            BodyContent(viewModel.exercise)
         }
     )
 }

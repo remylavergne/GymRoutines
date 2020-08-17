@@ -10,6 +10,7 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Providers
 import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.util.identityHashCode
 import com.github.zsoltk.compose.backpress.AmbientBackPressHandler
 import com.github.zsoltk.compose.backpress.BackPressHandler
 import com.github.zsoltk.compose.router.Router
@@ -17,6 +18,7 @@ import com.noahjutz.gymroutines.data.domain.Exercise
 import com.noahjutz.gymroutines.data.domain.FullRoutine
 import com.noahjutz.gymroutines.ui.exercises.ExercisesViewModel
 import com.noahjutz.gymroutines.ui.exercises.edit.EditExercise
+import com.noahjutz.gymroutines.ui.exercises.edit.EditExerciseViewModel
 import com.noahjutz.gymroutines.ui.routines.RoutinesViewModel
 import com.noahjutz.gymroutines.ui.routines.edit.EditRoutine
 import com.noahjutz.gymroutines.ui.routines.edit.EditRoutineViewModel
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private val backPressHandler = BackPressHandler()
 
     private val editRoutineViewModel: EditRoutineViewModel by viewModels()
+    private val editExerciseViewModel: EditExerciseViewModel by viewModels()
     private val routinesViewModel: RoutinesViewModel by viewModels()
     private val exercisesViewModel: ExercisesViewModel by viewModels()
 
@@ -44,6 +47,7 @@ class MainActivity : AppCompatActivity() {
                     Content(
                         defaultRouting = Routing.MainScreen,
                         editRoutineViewModel = editRoutineViewModel,
+                        editExerciseViewModel = editExerciseViewModel,
                         routinesViewModel = routinesViewModel,
                         exercisesViewModel = exercisesViewModel
                     )
@@ -63,6 +67,7 @@ class MainActivity : AppCompatActivity() {
 fun Content(
     defaultRouting: Routing,
     editRoutineViewModel: EditRoutineViewModel,
+    editExerciseViewModel: EditExerciseViewModel,
     routinesViewModel: RoutinesViewModel,
     exercisesViewModel: ExercisesViewModel
 ) {
@@ -73,12 +78,15 @@ fun Content(
                 exercisesViewModel = exercisesViewModel,
                 navTo = { backStack.push(it) }
             )
-            is Routing.EditExercise -> EditExercise(
-                exercise = routing.exercise, // TODO: Replace with viewModel
-                navBack = { backStack.pop() }
-            )
+            is Routing.EditExercise -> {
+                ArgsStorage.args["exerciseId"] = routing.exercise.exerciseId // TODO save as constant
+                EditExercise(
+                    viewModel = editExerciseViewModel,
+                    navBack = { backStack.pop() }
+                )
+            }
             is Routing.EditRoutine -> {
-                ArgsStorage.args["routineId"] = routing.routine.routine.routineId
+                ArgsStorage.args["routineId"] = routing.routine.routine.routineId // TODO save as constant
                 EditRoutine(
                     viewModel = editRoutineViewModel,
                     navBack = { backStack.pop() }
@@ -90,6 +98,9 @@ fun Content(
 
 sealed class Routing {
     object MainScreen : Routing() // TODO: Pass which screen as parameter?
-    data class EditRoutine(val routine: FullRoutine) : Routing() // TODO: replace parameter with routineId
-    data class EditExercise(val exercise: Exercise) : Routing() // TODO: replace parameter with exerciseId
+    data class EditRoutine(val routine: FullRoutine) :
+        Routing() // TODO: replace parameter with routineId
+
+    data class EditExercise(val exercise: Exercise) :
+        Routing() // TODO: replace parameter with exerciseId
 }
