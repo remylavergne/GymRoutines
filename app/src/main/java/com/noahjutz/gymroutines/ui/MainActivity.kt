@@ -3,10 +3,8 @@ package com.noahjutz.gymroutines.ui
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
@@ -26,8 +24,10 @@ private const val TAG = "MainActivity"
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
     private val backPressHandler = BackPressHandler()
+
+    private val editRoutineViewModel: EditRoutineViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +38,9 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     Content(
                         Routing.MainScreen,
-                        viewModel.routines,
-                        viewModel.exercises
+                        mainViewModel.routines,
+                        mainViewModel.exercises,
+                        editRoutineViewModel
                     )
                 }
             }
@@ -57,7 +58,8 @@ class MainActivity : AppCompatActivity() {
 fun Content(
     defaultRouting: Routing,
     routines: LiveData<List<FullRoutine>>,
-    exercises: LiveData<List<Exercise>>
+    exercises: LiveData<List<Exercise>>,
+    editRoutineViewModel: EditRoutineViewModel
 ) {
     Router(defaultRouting) { backStack ->
         when (val routing = backStack.last()) {
@@ -73,7 +75,10 @@ fun Content(
             )
             is Routing.EditRoutine -> {
                 ArgsStorage.args["routineId"] = routing.routine.routine.routineId
-                EditRoutine(navBack = { backStack.pop() })
+                EditRoutine(
+                    navBack = { backStack.pop() },
+                    viewModel = editRoutineViewModel
+                )
             }
         }
     }

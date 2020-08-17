@@ -23,12 +23,13 @@ import com.noahjutz.gymroutines.data.domain.ExerciseImpl
 
 @Composable
 fun EditRoutine(
+    viewModel: EditRoutineViewModel,
     navBack: () -> Unit
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edit Routine") },
+                title = { Text(viewModel.routine.routine.name) },
                 navigationIcon = {
                     IconButton(
                         onClick = navBack,
@@ -38,16 +39,18 @@ fun EditRoutine(
             )
         },
         bodyContent = {
-            BodyContent()
+            BodyContent(viewModel)
         }
     )
 }
 
 @Suppress("NAME_SHADOWING")
 @Composable
-private fun BodyContent() {
-    val name = state { "" } // TODO real data source
-    val description = state { "" } // TODO real data source
+private fun BodyContent(
+    viewModel: EditRoutineViewModel
+) {
+    val name = state { viewModel.routine.routine.name }
+    val description = state { viewModel.routine.routine.description }
     ScrollableColumn { // TODO: fix performance issues
         TextField(
             value = name.value,
@@ -63,7 +66,7 @@ private fun BodyContent() {
         )
         Divider(modifier = Modifier.padding(bottom = 16.dp))
         LazyColumnFor(
-            items = emptyList<ExerciseImpl>(), // TODO real data source
+            items = viewModel.routine.exercises,
             modifier = Modifier.padding(start = 16.dp, end = 16.dp)
         ) { exercise ->
             Card(
