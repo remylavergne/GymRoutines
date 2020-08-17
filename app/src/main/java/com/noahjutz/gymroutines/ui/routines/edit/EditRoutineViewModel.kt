@@ -1,4 +1,4 @@
-package com.noahjutz.gymroutines.ui
+package com.noahjutz.gymroutines.ui.routines.edit
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel

@@ -9,21 +9,24 @@ import androidx.compose.material.icons.filled.DirectionsRun
 import androidx.compose.material.icons.filled.ViewAgenda
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.state
-import androidx.lifecycle.LiveData
 import com.noahjutz.gymroutines.data.domain.Exercise
 import com.noahjutz.gymroutines.data.domain.FullRoutine
 import com.noahjutz.gymroutines.data.domain.Routine
+import com.noahjutz.gymroutines.ui.exercises.ExercisesScreen
+import com.noahjutz.gymroutines.ui.exercises.ExercisesViewModel
+import com.noahjutz.gymroutines.ui.routines.RoutinesScreen
+import com.noahjutz.gymroutines.ui.routines.RoutinesViewModel
 
 enum class TopLevelDestinations { Routines, Exercises }
 
 @Composable
 fun Main(
-    routines: LiveData<List<FullRoutine>>,
-    exercises: LiveData<List<Exercise>>,
     editRoutine: (FullRoutine) -> Unit,
-    editExercise: (Exercise) -> Unit
+    editExercise: (Exercise) -> Unit,
+    routinesViewModel: RoutinesViewModel,
+    exercisesViewModel: ExercisesViewModel
 ) {
-    // TODO: Use compose-router here
+    // TODO: Use compose-router here?
     val screen = state { TopLevelDestinations.Routines }
     Scaffold(
         topBar = { TopAppBar(title = { Text("GymRoutines") }) },
@@ -52,8 +55,8 @@ fun Main(
         },
         bodyContent = {
             when (screen.value) {
-                TopLevelDestinations.Routines -> RoutinesScreen(routines, editRoutine)
-                TopLevelDestinations.Exercises -> ExercisesScreen(exercises, editExercise)
+                TopLevelDestinations.Routines -> RoutinesScreen(routinesViewModel, editRoutine)
+                TopLevelDestinations.Exercises -> ExercisesScreen(exercisesViewModel, editExercise)
             }
         }
     )

@@ -1,4 +1,4 @@
-package com.noahjutz.gymroutines.ui
+package com.noahjutz.gymroutines.ui.routines
 
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.ListItem
@@ -9,10 +9,10 @@ import com.noahjutz.gymroutines.data.domain.FullRoutine
 
 @Composable
 fun RoutinesScreen(
-    routines: LiveData<List<FullRoutine>>,
+    viewModel: RoutinesViewModel,
     editRoutine: (FullRoutine) -> Unit
 ) {
-    val routinesList = routines.observeAsState()
+    val routinesList = viewModel.routines.observeAsState()
     LazyColumnFor(items = routinesList.value ?: emptyList()) { routine ->
         ListItem(
             text = routine.routine.name,

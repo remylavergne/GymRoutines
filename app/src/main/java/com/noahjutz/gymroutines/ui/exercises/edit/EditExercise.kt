@@ -1,4 +1,4 @@
-package com.noahjutz.gymroutines.ui
+package com.noahjutz.gymroutines.ui.exercises.edit
 
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.ScrollableColumn

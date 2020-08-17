@@ -1,4 +1,4 @@
-package com.noahjutz.gymroutines.ui
+package com.noahjutz.gymroutines.ui.routines.edit
 
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.ScrollableColumn
@@ -19,7 +19,6 @@ import androidx.compose.runtime.state
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.noahjutz.gymroutines.data.domain.ExerciseImpl
 
 @Composable
 fun EditRoutine(

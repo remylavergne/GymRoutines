@@ -10,12 +10,16 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Providers
 import androidx.compose.ui.platform.setContent
-import androidx.lifecycle.LiveData
 import com.github.zsoltk.compose.backpress.AmbientBackPressHandler
 import com.github.zsoltk.compose.backpress.BackPressHandler
 import com.github.zsoltk.compose.router.Router
 import com.noahjutz.gymroutines.data.domain.Exercise
 import com.noahjutz.gymroutines.data.domain.FullRoutine
+import com.noahjutz.gymroutines.ui.exercises.ExercisesViewModel
+import com.noahjutz.gymroutines.ui.exercises.edit.EditExercise
+import com.noahjutz.gymroutines.ui.routines.RoutinesViewModel
+import com.noahjutz.gymroutines.ui.routines.edit.EditRoutine
+import com.noahjutz.gymroutines.ui.routines.edit.EditRoutineViewModel
 import com.noahjutz.gymroutines.util.ArgsStorage
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,10 +28,11 @@ private const val TAG = "MainActivity"
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val mainViewModel: MainViewModel by viewModels()
     private val backPressHandler = BackPressHandler()
 
     private val editRoutineViewModel: EditRoutineViewModel by viewModels()
+    private val routinesViewModel: RoutinesViewModel by viewModels()
+    private val exercisesViewModel: ExercisesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +42,10 @@ class MainActivity : AppCompatActivity() {
                     AmbientBackPressHandler provides backPressHandler
                 ) {
                     Content(
-                        Routing.MainScreen,
-                        mainViewModel.routines,
-                        mainViewModel.exercises,
-                        editRoutineViewModel
+                        defaultRouting = Routing.MainScreen,
+                        editRoutineViewModel = editRoutineViewModel,
+                        routinesViewModel = routinesViewModel,
+                        exercisesViewModel = exercisesViewModel
                     )
                 }
             }
@@ -57,27 +62,27 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun Content(
     defaultRouting: Routing,
-    routines: LiveData<List<FullRoutine>>,
-    exercises: LiveData<List<Exercise>>,
-    editRoutineViewModel: EditRoutineViewModel
+    editRoutineViewModel: EditRoutineViewModel,
+    routinesViewModel: RoutinesViewModel,
+    exercisesViewModel: ExercisesViewModel
 ) {
     Router(defaultRouting) { backStack ->
         when (val routing = backStack.last()) {
             is Routing.MainScreen -> Main(
-                routines = routines,
-                exercises = exercises,
-                editRoutine = { backStack.push(Routing.EditRoutine(it)) },
+                routinesViewModel = routinesViewModel,
+                exercisesViewModel = exercisesViewModel,
+                editRoutine = { backStack.push(Routing.EditRoutine(it)) }, // TODO: replace with generic navigate function
                 editExercise = { backStack.push(Routing.EditExercise(it)) }
             )
             is Routing.EditExercise -> EditExercise(
-                exercise = routing.exercise,
+                exercise = routing.exercise, // TODO: Replace with viewModel
                 navBack = { backStack.pop() }
             )
             is Routing.EditRoutine -> {
                 ArgsStorage.args["routineId"] = routing.routine.routine.routineId
                 EditRoutine(
-                    navBack = { backStack.pop() },
-                    viewModel = editRoutineViewModel
+                    viewModel = editRoutineViewModel,
+                    navBack = { backStack.pop() }
                 )
             }
         }
@@ -85,7 +90,7 @@ fun Content(
 }
 
 sealed class Routing {
-    object MainScreen : Routing()
-    data class EditRoutine(val routine: FullRoutine) : Routing()
-    data class EditExercise(val exercise: Exercise) : Routing()
+    object MainScreen : Routing() // TODO: Pass which screen as parameter?
+    data class EditRoutine(val routine: FullRoutine) : Routing() // TODO: replace parameter with routineId
+    data class EditExercise(val exercise: Exercise) : Routing() // TODO: replace parameter with exerciseId
 }
