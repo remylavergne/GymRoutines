@@ -10,4 +10,8 @@ class RoutinesViewModel @ViewModelInject constructor(private val repository: Rep
     ViewModel() {
     val routines: LiveData<List<FullRoutine>>
         get() = repository.fullRoutines
+
+    fun delete(routine: FullRoutine) {
+        repository.delete(routine)
+    }
 }
