@@ -48,8 +48,8 @@ fun Main(
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 if (screen.value == TopLevelDestinations.Routines)
-                    navTo(Routing.EditRoutine(FullRoutine(Routine(), emptyList())))
-                else navTo(Routing.EditExercise(Exercise()))
+                    navTo(Routing.EditRoutine(-1))
+                else navTo(Routing.EditExercise(-1))
             }, icon = { Icon(Icons.Filled.Add) })
         },
         bodyContent = {

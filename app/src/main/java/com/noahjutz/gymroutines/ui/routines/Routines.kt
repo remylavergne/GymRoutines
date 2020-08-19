@@ -29,7 +29,7 @@ fun RoutinesScreen(
                     onClick = { viewModel.delete(routine) }
                 )
             },
-            modifier = Modifier.clickable(onClick = { navTo(Routing.EditRoutine(routine)) })
+            modifier = Modifier.clickable(onClick = { navTo(Routing.EditRoutine(routine.routine.routineId)) })
         )
     }
 }

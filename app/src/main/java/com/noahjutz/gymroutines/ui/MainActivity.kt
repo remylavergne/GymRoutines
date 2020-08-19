@@ -78,14 +78,14 @@ fun Content(
                 navTo = { backStack.push(it) }
             )
             is Routing.EditExercise -> {
-                ArgsStorage.args[ArgsStorage.Keys.EXERCISE_ID] = routing.exercise.exerciseId
+                ArgsStorage.args[ArgsStorage.Keys.EXERCISE_ID] = routing.exerciseId
                 EditExercise(
                     viewModel = editExerciseViewModel,
                     navBack = { backStack.pop() }
                 )
             }
             is Routing.EditRoutine -> {
-                ArgsStorage.args[ArgsStorage.Keys.ROUTINE_ID] = routing.routine.routine.routineId
+                ArgsStorage.args[ArgsStorage.Keys.ROUTINE_ID] = routing.routineId
                 EditRoutine(
                     viewModel = editRoutineViewModel,
                     navBack = { backStack.pop() }
@@ -97,9 +97,6 @@ fun Content(
 
 sealed class Routing {
     object MainScreen : Routing() // TODO: Pass which screen as parameter?
-    data class EditRoutine(val routine: FullRoutine) :
-        Routing() // TODO: replace parameter with routineId
-
-    data class EditExercise(val exercise: Exercise) :
-        Routing() // TODO: replace parameter with exerciseId
+    data class EditRoutine(val routineId: Int) : Routing()
+    data class EditExercise(val exerciseId: Int) : Routing()
 }

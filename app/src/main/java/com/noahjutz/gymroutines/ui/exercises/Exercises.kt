@@ -16,7 +16,7 @@ fun ExercisesScreen(
         ListItem(
             text = exercise.name.takeIf { it.isNotBlank() } ?: "Unnamed",
             secondaryText = exercise.description.let { if (it.isEmpty()) null else it },
-            onClick = { navTo(Routing.EditExercise(exercise)) }
+            onClick = { navTo(Routing.EditExercise(exercise.exerciseId)) }
         )
     }
 }
