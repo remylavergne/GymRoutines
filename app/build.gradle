@@ -63,7 +63,6 @@ configurations.all {
 }
 
 dependencies {
-    def room_version = "2.2.5" // TODO: Use Dependencies.kt reference
     def compose_version = "0.1.0-dev17" // TODO: Use Dependencies.kt reference
     def lifecycle_version = "2.2.0" // TODO: Use Dependencies.kt reference
 
@@ -76,9 +75,9 @@ dependencies {
     kapt(Libs.hiltExtCompiler)
 
     // Room
-    kapt("androidx.room:room-compiler:$room_version") // TODO: Use Dependencies.kt reference
-    implementation("androidx.room:room-ktx:$room_version") // TODO: Use Dependencies.kt reference
-    implementation("androidx.room:room-runtime:$room_version") // TODO: Use Dependencies.kt reference
+    kapt(Libs.roomCompiler)
+    implementation(Libs.room)
+    implementation(Libs.roomRuntime)
 
     // Testing
     testImplementation("junit:junit:4.13") // TODO: Use Dependencies.kt reference
