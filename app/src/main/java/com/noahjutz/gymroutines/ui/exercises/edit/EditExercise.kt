@@ -17,13 +17,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.viewModel
 import com.noahjutz.gymroutines.data.domain.Exercise
 
 @Composable
-fun EditExercise(
-    viewModel: EditExerciseViewModel,
-    navBack: () -> Unit
-) {
+fun EditExercise(navBack: () -> Unit ) {
+    val viewModel = viewModel<EditExerciseViewModel>()
     Scaffold(
         topBar = {
             TopAppBar(

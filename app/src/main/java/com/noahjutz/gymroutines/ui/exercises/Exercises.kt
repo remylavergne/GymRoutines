@@ -7,13 +7,12 @@ import androidx.compose.material.ListItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.viewinterop.viewModel
 import com.noahjutz.gymroutines.ui.Routing
 
 @Composable
-fun ExercisesScreen(
-    viewModel: ExercisesViewModel,
-    navTo: (Routing) -> Unit
-) {
+fun ExercisesScreen(navTo: (Routing) -> Unit) {
+    val viewModel = viewModel<ExercisesViewModel>()
     val exerciseList = viewModel.exercises.observeAsState()
     LazyColumnFor(items = exerciseList.value?.filter { !it.hidden } ?: emptyList()) { exercise ->
         ListItem(

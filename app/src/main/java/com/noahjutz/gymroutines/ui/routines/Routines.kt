@@ -11,13 +11,14 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.viewinterop.viewModel
 import com.noahjutz.gymroutines.ui.Routing
 
 @Composable
 fun RoutinesScreen(
-    viewModel: RoutinesViewModel,
     navTo: (Routing) -> Unit
 ) {
+    val viewModel = viewModel<RoutinesViewModel>()
     val routinesList = viewModel.routines.observeAsState()
     LazyColumnFor(items = routinesList.value ?: emptyList()) { routine ->
         ListItem(

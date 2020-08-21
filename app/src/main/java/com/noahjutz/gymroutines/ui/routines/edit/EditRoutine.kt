@@ -20,12 +20,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.viewModel
 
 @Composable
-fun EditRoutine(
-    viewModel: EditRoutineViewModel,
-    navBack: () -> Unit
-) {
+fun EditRoutine(navBack: () -> Unit) {
+    val viewModel = viewModel<EditRoutineViewModel>()
     Scaffold(
         topBar = {
             TopAppBar(

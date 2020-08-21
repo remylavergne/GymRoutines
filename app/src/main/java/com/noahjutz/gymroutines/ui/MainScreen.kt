@@ -22,11 +22,7 @@ import com.noahjutz.gymroutines.ui.routines.RoutinesViewModel
 enum class TopLevelDestinations { Routines, Exercises }
 
 @Composable
-fun Main(
-    routinesViewModel: RoutinesViewModel,
-    exercisesViewModel: ExercisesViewModel,
-    navTo: (Routing) -> Unit
-) {
+fun Main(navTo: (Routing) -> Unit) {
     // TODO: Use compose-router here?
     val screen = remember { mutableStateOf(TopLevelDestinations.Routines) }
     Scaffold(
@@ -56,8 +52,8 @@ fun Main(
         },
         bodyContent = {
             when (screen.value) {
-                TopLevelDestinations.Routines -> RoutinesScreen(routinesViewModel, navTo)
-                TopLevelDestinations.Exercises -> ExercisesScreen(exercisesViewModel, navTo)
+                TopLevelDestinations.Routines -> RoutinesScreen(navTo)
+                TopLevelDestinations.Exercises -> ExercisesScreen(navTo)
             }
         }
     )
