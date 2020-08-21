@@ -78,9 +78,9 @@ private fun BodyContent(
                         modifier = Modifier.padding(bottom = 16.dp)
                     ) { index, set ->
                         ListItem(
-                            text = "Set ${index + 1}",
-                            secondaryText = set.toString(),
-                            onClick = {})
+                            text = { Text("Set ${index + 1}") },
+                            secondaryText = { Text(set.toString()) },
+                        )
                     }
                     Row(modifier = Modifier.gravity(Alignment.End)) {
                         IconButton(

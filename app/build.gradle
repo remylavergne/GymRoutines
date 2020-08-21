@@ -44,7 +44,7 @@ android {
 
     composeOptions {
         kotlinCompilerVersion "1.4.0"
-        kotlinCompilerExtensionVersion "0.1.0-dev16"
+        kotlinCompilerExtensionVersion "0.1.0-dev17"
     }
 }
 
@@ -64,7 +64,7 @@ configurations.all {
 
 dependencies {
     def room_version = "2.2.5"
-    def compose_version = "0.1.0-dev16"
+    def compose_version = "0.1.0-dev17"
 
     // Core / general
     implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
