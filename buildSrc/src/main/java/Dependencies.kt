@@ -26,4 +26,6 @@ object TestLibs {
 
 object Classpaths {
     const val gradle = "com.android.tools.build:gradle:4.2.0-alpha07"
+    const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+    const val hiltGradle = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
 }
