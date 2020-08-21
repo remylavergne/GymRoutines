@@ -3,7 +3,6 @@ package com.noahjutz.gymroutines.ui.routines.edit
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import com.noahjutz.gymroutines.data.Repository
-import com.noahjutz.gymroutines.data.domain.FullRoutine
 import com.noahjutz.gymroutines.util.ArgsStorage
 import com.noahjutz.gymroutines.util.provideRoutine
 

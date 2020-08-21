@@ -11,7 +11,6 @@ import androidx.compose.runtime.Providers
 import androidx.compose.ui.platform.setContent
 import com.github.zsoltk.compose.backpress.AmbientBackPressHandler
 import com.github.zsoltk.compose.backpress.BackPressHandler
-import com.github.zsoltk.compose.router.BackStack
 import com.github.zsoltk.compose.router.Router
 import com.noahjutz.gymroutines.ui.exercises.edit.EditExercise
 import com.noahjutz.gymroutines.ui.routines.edit.EditRoutine

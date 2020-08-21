@@ -32,7 +32,7 @@ fun EditRoutine(navTo: (Routing) -> Unit) {
                 title = { Text(viewModel.routine.routine.name) },
                 navigationIcon = {
                     IconButton(
-                        onClick = {navTo(Routing.MainScreen)},
+                        onClick = { navTo(Routing.MainScreen) },
                         icon = { Icon(Icons.Filled.ArrowBack) }
                     )
                 }
@@ -101,4 +101,3 @@ private fun BodyContent(
         )
     }
 }
-

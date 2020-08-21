@@ -10,14 +10,8 @@ import androidx.compose.material.icons.filled.ViewAgenda
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.state
-import com.noahjutz.gymroutines.data.domain.Exercise
-import com.noahjutz.gymroutines.data.domain.FullRoutine
-import com.noahjutz.gymroutines.data.domain.Routine
 import com.noahjutz.gymroutines.ui.exercises.ExercisesScreen
-import com.noahjutz.gymroutines.ui.exercises.ExercisesViewModel
 import com.noahjutz.gymroutines.ui.routines.RoutinesScreen
-import com.noahjutz.gymroutines.ui.routines.RoutinesViewModel
 
 enum class TopLevelDestinations { Routines, Exercises }
 
@@ -44,11 +38,14 @@ fun Main(navTo: (Routing) -> Unit) {
             }
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                if (screen.value == TopLevelDestinations.Routines)
-                    navTo(Routing.EditRoutine(-1))
-                else navTo(Routing.EditExercise(-1))
-            }, icon = { Icon(Icons.Filled.Add) })
+            FloatingActionButton(
+                onClick = {
+                    if (screen.value == TopLevelDestinations.Routines)
+                        navTo(Routing.EditRoutine(-1))
+                    else navTo(Routing.EditExercise(-1))
+                },
+                icon = { Icon(Icons.Filled.Add) }
+            )
         },
         bodyContent = {
             when (screen.value) {
