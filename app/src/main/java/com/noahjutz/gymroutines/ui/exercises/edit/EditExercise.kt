@@ -12,7 +12,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.state
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -45,13 +46,13 @@ fun EditExercise(
 private fun BodyContent(
     exercise: Exercise
 ) {
-    val name = state { exercise.name }
-    val description = state { exercise.description }
+    val name = remember { mutableStateOf(exercise.name) }
+    val description = remember { mutableStateOf(exercise.description) }
 
-    val logReps = state { exercise.logReps }
-    val logDistance = state { exercise.logDistance }
-    val logWeight = state { exercise.logWeight }
-    val logTime = state { exercise.logWeight }
+    val logReps = remember { mutableStateOf(exercise.logReps) }
+    val logDistance = remember { mutableStateOf(exercise.logDistance) }
+    val logWeight = remember { mutableStateOf(exercise.logWeight) }
+    val logTime = remember { mutableStateOf(exercise.logWeight) }
 
     ScrollableColumn {
         TextField(
@@ -77,7 +78,8 @@ private fun BodyContent(
 @Composable
 private fun LabeledCheckbox(label: String, stateValue: MutableState<Boolean>) {
     Row(
-        modifier = Modifier.clickable(onClick = { stateValue.value = !stateValue.value }).fillMaxWidth()
+        modifier = Modifier.clickable(onClick = { stateValue.value = !stateValue.value })
+            .fillMaxWidth()
     ) {
         Checkbox(
             checked = stateValue.value,

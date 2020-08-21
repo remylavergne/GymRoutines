@@ -15,7 +15,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.state
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -48,8 +49,8 @@ fun EditRoutine(
 private fun BodyContent(
     viewModel: EditRoutineViewModel
 ) {
-    val name = state { viewModel.routine.routine.name }
-    val description = state { viewModel.routine.routine.description }
+    val name = remember { mutableStateOf(viewModel.routine.routine.name) }
+    val description = remember { mutableStateOf(viewModel.routine.routine.description) }
     ScrollableColumn { // TODO: fix performance issues
         TextField(
             value = name.value,
