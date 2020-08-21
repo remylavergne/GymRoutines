@@ -19,9 +19,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import com.noahjutz.gymroutines.data.domain.Exercise
+import com.noahjutz.gymroutines.ui.Routing
 
 @Composable
-fun EditExercise(navBack: () -> Unit ) {
+fun EditExercise(navTo: (Routing) -> Unit) {
     val viewModel = viewModel<EditExerciseViewModel>()
     Scaffold(
         topBar = {
@@ -29,7 +30,7 @@ fun EditExercise(navBack: () -> Unit ) {
                 title = { Text(viewModel.exercise.name) },
                 navigationIcon = {
                     IconButton(
-                        onClick = navBack,
+                        onClick = { navTo(Routing.MainScreen) },
                         icon = { Icon(Icons.Filled.ArrowBack) }
                     )
                 }

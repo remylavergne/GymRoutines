@@ -21,9 +21,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
+import com.noahjutz.gymroutines.ui.Routing
 
 @Composable
-fun EditRoutine(navBack: () -> Unit) {
+fun EditRoutine(navTo: (Routing) -> Unit) {
     val viewModel = viewModel<EditRoutineViewModel>()
     Scaffold(
         topBar = {
@@ -31,7 +32,7 @@ fun EditRoutine(navBack: () -> Unit) {
                 title = { Text(viewModel.routine.routine.name) },
                 navigationIcon = {
                     IconButton(
-                        onClick = navBack,
+                        onClick = {navTo(Routing.MainScreen)},
                         icon = { Icon(Icons.Filled.ArrowBack) }
                     )
                 }
