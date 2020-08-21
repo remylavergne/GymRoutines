@@ -8,6 +8,8 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.DirectionsRun
 import androidx.compose.material.icons.filled.ViewAgenda
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.state
 import com.noahjutz.gymroutines.data.domain.Exercise
 import com.noahjutz.gymroutines.data.domain.FullRoutine
@@ -26,7 +28,7 @@ fun Main(
     navTo: (Routing) -> Unit
 ) {
     // TODO: Use compose-router here?
-    val screen = state { TopLevelDestinations.Routines }
+    val screen = remember { mutableStateOf(TopLevelDestinations.Routines) }
     Scaffold(
         topBar = { TopAppBar(title = { Text("GymRoutines") }) },
         bottomBar = {
