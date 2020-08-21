@@ -10,14 +10,20 @@ object Versions {
     const val gradle = "4.2.0-alpha07"
     const val kotlin = "1.4.0"
     const val hilt = "2.28-alpha"
+    const val hiltExt = "1.0.0-alpha02"
 
     // Test
     const val junit = "4.12"
 }
 
 object Libs {
+    const val core = "androidx.core:core-ktx:1.3.1"
+
+    // Hilt
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    const val hiltExt = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltExt}"
+    const val hiltExtCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltExt}"
 }
 
 object TestLibs {
