@@ -14,6 +14,8 @@ object Versions {
     const val room = "2.2.5"
     const val coroutines = "1.3.6"
     const val compose = "0.1.0-dev17"
+    const val composeRouter = "0.16.0"
+    const val material = "1.2.0"
 
     // Test
     const val junit = "4.12"
@@ -40,6 +42,10 @@ object Libs {
     const val composeLivedata = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
     const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
     const val composeIcons = "androidx.compose.material:material-icons-extended:${Versions.compose}"
+
+    const val composeRouter = "com.github.zsoltk:compose-router:${Versions.composeRouter}"
+
+    const val material = "com.google.android.material:material:${Versions.material}"
 }
 
 object TestLibs {

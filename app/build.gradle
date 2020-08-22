@@ -63,7 +63,6 @@ configurations.all {
 }
 
 dependencies {
-    def compose_version = "0.1.0-dev17" // TODO: Use Dependencies.kt reference
     def lifecycle_version = "2.2.0" // TODO: Use Dependencies.kt reference
 
     implementation(Libs.core)
@@ -97,10 +96,10 @@ dependencies {
     implementation(Libs.composeRuntime)
 
     // Compose-Router
-    implementation("com.github.zsoltk:compose-router:0.16.0") // TODO: Use Dependencies.kt reference
+    implementation(Libs.composeRouter)
 
     // Material Design
-    implementation("com.google.android.material:material:1.2.0") // TODO: Use Dependencies.kt reference
+    implementation(Libs.material)
 
     // LiveData / Lifecycle
     implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version") // TODO: Use Dependencies.kt reference
