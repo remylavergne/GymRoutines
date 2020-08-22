@@ -88,13 +88,13 @@ dependencies {
     implementation(Libs.coroutines)
 
     // Compose
-    implementation("androidx.ui:ui-tooling:$compose_version") // TODO: Use Dependencies.kt reference
-    implementation("androidx.compose.foundation:foundation:$compose_version") // TODO: Use Dependencies.kt reference
-    implementation("androidx.compose.material:material:$compose_version") // TODO: Use Dependencies.kt reference
-    implementation("androidx.compose.runtime:runtime-livedata:$compose_version") // TODO: Use Dependencies.kt reference
-    implementation("androidx.compose.runtime:runtime:$compose_version") // TODO: Use Dependencies.kt reference
-    implementation("androidx.compose.ui:ui:$compose_version") // TODO: Use Dependencies.kt reference
-    implementation("androidx.compose.material:material-icons-extended:$compose_version") // TODO: Use Dependencies.kt reference
+    implementation(Libs.compose)
+    implementation(Libs.composeFoundation)
+    implementation(Libs.composeIcons)
+    implementation(Libs.composeLivedata)
+    implementation(Libs.composeMaterial)
+    implementation(Libs.composeTooling)
+    implementation(Libs.composeRuntime)
 
     // Compose-Router
     implementation("com.github.zsoltk:compose-router:0.16.0") // TODO: Use Dependencies.kt reference

@@ -13,6 +13,7 @@ object Versions {
     const val hiltExt = "1.0.0-alpha02"
     const val room = "2.2.5"
     const val coroutines = "1.3.6"
+    const val compose = "0.1.0-dev17"
 
     // Test
     const val junit = "4.12"
@@ -31,6 +32,14 @@ object Libs {
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
 
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+
+    const val compose = "androidx.compose.ui:ui:${Versions.compose}"
+    const val composeTooling = "androidx.ui:ui-tooling:${Versions.compose}"
+    const val composeFoundation = "androidx.compose.foundation:foundation:${Versions.compose}"
+    const val composeMaterial = "androidx.compose.material:material:${Versions.compose}"
+    const val composeLivedata = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
+    const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
+    const val composeIcons = "androidx.compose.material:material-icons-extended:${Versions.compose}"
 }
 
 object TestLibs {
