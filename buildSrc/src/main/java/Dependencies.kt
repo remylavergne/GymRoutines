@@ -12,6 +12,7 @@ object Versions {
     const val hilt = "2.28-alpha"
     const val hiltExt = "1.0.0-alpha02"
     const val room = "2.2.5"
+    const val coroutines = "1.3.6"
 
     // Test
     const val junit = "4.12"
@@ -20,16 +21,16 @@ object Versions {
 object Libs {
     const val core = "androidx.core:core-ktx:1.3.1"
 
-    // Hilt
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
     const val hiltExt = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltExt}"
     const val hiltExtCompiler = "androidx.hilt:hilt-compiler:${Versions.hiltExt}"
 
-    // Room
+    const val room = "androidx.room:room-ktx:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
-    const val room ="androidx.room:room-ktx:${Versions.room}"
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 }
 
 object TestLibs {
