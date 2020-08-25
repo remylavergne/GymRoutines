@@ -19,7 +19,9 @@ object Versions {
     const val lifecycle = "2.2.0"
 
     // Test
-    const val junit = "4.12"
+    const val junit = "4.13"
+    const val junitAndroid = "1.1.1"
+    const val espresso = "3.2.0"
 }
 
 object Libs {
@@ -43,7 +45,6 @@ object Libs {
     const val composeLivedata = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
     const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
     const val composeIcons = "androidx.compose.material:material-icons-extended:${Versions.compose}"
-
     const val composeRouter = "com.github.zsoltk:compose-router:${Versions.composeRouter}"
 
     const val material = "com.google.android.material:material:${Versions.material}"
@@ -54,10 +55,12 @@ object Libs {
 
 object TestLibs {
     const val junit = "junit:junit:${Versions.junit}"
+    const val junitAndroid = "androidx.test.ext:${Versions.junitAndroid}"
+    const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
 }
 
 object Classpaths {
-    const val gradle = "com.android.tools.build:gradle:4.2.0-alpha07"
+    const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
     const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     const val hiltGradle = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
 }
