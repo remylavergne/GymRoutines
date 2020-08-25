@@ -16,6 +16,7 @@ object Versions {
     const val compose = "0.1.0-dev17"
     const val composeRouter = "0.16.0"
     const val material = "1.2.0"
+    const val lifecycle = "2.2.0"
 
     // Test
     const val junit = "4.12"
@@ -46,6 +47,9 @@ object Libs {
     const val composeRouter = "com.github.zsoltk:compose-router:${Versions.composeRouter}"
 
     const val material = "com.google.android.material:material:${Versions.material}"
+
+    const val lifecycle = "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle}"
+    const val livedata = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
 }
 
 object TestLibs {

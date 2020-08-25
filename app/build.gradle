@@ -63,30 +63,23 @@ configurations.all {
 }
 
 dependencies {
-    def lifecycle_version = "2.2.0" // TODO: Use Dependencies.kt reference
-
     implementation(Libs.core)
 
-    // Hilt
     implementation(Libs.hilt)
     kapt(Libs.hiltCompiler)
     implementation(Libs.hiltExt)
     kapt(Libs.hiltExtCompiler)
 
-    // Room
-    kapt(Libs.roomCompiler)
     implementation(Libs.room)
+    kapt(Libs.roomCompiler)
     implementation(Libs.roomRuntime)
 
-    // Testing
     testImplementation("junit:junit:4.13") // TODO: Use Dependencies.kt reference
     androidTestImplementation("androidx.test.ext:junit:1.1.1") // TODO: Use Dependencies.kt reference
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0") // TODO: Use Dependencies.kt reference
 
-    // Coroutines
     implementation(Libs.coroutines)
 
-    // Compose
     implementation(Libs.compose)
     implementation(Libs.composeFoundation)
     implementation(Libs.composeIcons)
@@ -94,16 +87,12 @@ dependencies {
     implementation(Libs.composeMaterial)
     implementation(Libs.composeTooling)
     implementation(Libs.composeRuntime)
-
-    // Compose-Router
     implementation(Libs.composeRouter)
 
-    // Material Design
     implementation(Libs.material)
 
-    // LiveData / Lifecycle
-    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version") // TODO: Use Dependencies.kt reference
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version") // TODO: Use Dependencies.kt reference
+    implementation(Libs.lifecycle)
+    implementation(Libs.livedata)
 
     // Ktlint
     // TODO
