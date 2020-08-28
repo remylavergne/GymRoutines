@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -10,12 +8,12 @@ plugins {
 
 android {
     compileSdkVersion(Apps.compileSdk)
-    buildToolsVersion "30.0.1"
+    buildToolsVersion("30.0.1")
 
     defaultConfig {
-        applicationId "com.noahjutz.gymroutines"
+        applicationId = "com.noahjutz.gymroutines"
         minSdkVersion(Apps.minSdk)
-        targetSdkVersion Apps.compileSdk
+        targetSdkVersion(Apps.compileSdk)
         versionCode = Apps.versionCode
         versionName = Apps.versionName
 
@@ -32,8 +30,8 @@ android {
     }
 
     buildTypes {
-        release {
-            minifyEnabled = false
+        getByName("release") {
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -45,13 +43,6 @@ android {
     composeOptions {
         kotlinCompilerVersion = Versions.kotlin
         kotlinCompilerExtensionVersion = Versions.compose
-    }
-}
-
-tasks.withType(KotlinCompile).configureEach {
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
     }
 }
 
