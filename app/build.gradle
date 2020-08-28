@@ -10,12 +10,12 @@ plugins {
 
 android {
     compileSdkVersion(Apps.compileSdk)
-    buildToolsVersion "29.0.3"
+    buildToolsVersion "30.0.1"
 
     defaultConfig {
         applicationId "com.noahjutz.gymroutines"
         minSdkVersion(Apps.minSdk)
-        targetSdkVersion 30
+        targetSdkVersion Apps.compileSdk
         versionCode = Apps.versionCode
         versionName = Apps.versionName
 
