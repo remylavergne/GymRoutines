@@ -1,4 +1,4 @@
-object Apps {
+object App {
     const val compileSdk = 30
     const val minSdk = 21
     const val targetSdk = 30
@@ -54,7 +54,6 @@ object Libs {
 
 object TestLibs {
     const val junit = "junit:junit:${Versions.junit}"
-    const val junitAndroid = "androidx.test.ext:${Versions.junitAndroid}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
 }
 

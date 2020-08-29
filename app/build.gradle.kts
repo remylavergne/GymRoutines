@@ -7,15 +7,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Apps.compileSdk)
+    compileSdkVersion(App.compileSdk)
     buildToolsVersion("30.0.1")
 
     defaultConfig {
         applicationId = "com.noahjutz.gymroutines"
-        minSdkVersion(Apps.minSdk)
-        targetSdkVersion(Apps.compileSdk)
-        versionCode = Apps.versionCode
-        versionName = Apps.versionName
+        minSdkVersion(App.minSdk)
+        targetSdkVersion(App.targetSdk)
+        versionCode = App.versionCode
+        versionName = App.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,13 +46,6 @@ android {
     }
 }
 
-configurations.all {
-    resolutionStrategy {
-        force("org.antlr:antlr4-runtime:4.7.1")
-        force("org.antlr:antlr4-tool:4.7.1")
-    }
-}
-
 dependencies {
     implementation(Libs.core)
 
@@ -70,7 +63,6 @@ dependencies {
     implementation(Libs.roomRuntime)
 
     testImplementation(TestLibs.junit)
-    androidTestImplementation(TestLibs.junitAndroid)
     androidTestImplementation(TestLibs.espresso)
 
     implementation(Libs.compose)
