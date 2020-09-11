@@ -7,8 +7,8 @@ object App {
 }
 
 object Versions {
-    const val gradle = "4.2.0-alpha09"
-    const val kotlin = "1.4.0"
+    const val gradle = "4.2.0-alpha10"
+    const val kotlin = "1.4.10"
     const val hilt = "2.28-alpha"
     const val hiltExt = "1.0.0-alpha02"
     const val room = "2.2.5"
