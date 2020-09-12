@@ -8,7 +8,7 @@ import com.noahjutz.gymroutines.data.domain.Routine
 fun Repository.provideRoutine(routineId: Int): FullRoutine = getFullRoutine(routineId)
     ?: getFullRoutine(insert(FullRoutine(Routine(), emptyList()))
         .toInt()
-        .also { ArgsStorage.args[ArgsStorage.Keys.ROUTINE_ID] = it })
+        .also { ArgsStorage.routineId = it })
     ?: throw NullPointerException("Impossible exception")
 
 fun Repository.provideExercise(exerciseId: Int): Exercise = getExercise(exerciseId)

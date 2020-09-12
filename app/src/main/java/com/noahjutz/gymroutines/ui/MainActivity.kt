@@ -54,11 +54,11 @@ fun Content(defaultRouting: Routing) {
                 Main(navTo)
             }
             is Routing.EditExercise -> {
-                ArgsStorage.args[ArgsStorage.Keys.EXERCISE_ID] = routing.exerciseId
+                ArgsStorage.exerciseId = routing.exerciseId
                 EditExercise(navTo)
             }
             is Routing.EditRoutine -> {
-                ArgsStorage.args[ArgsStorage.Keys.ROUTINE_ID] = routing.routineId
+                ArgsStorage.routineId = routing.routineId
                 EditRoutine(navTo)
             }
         }
