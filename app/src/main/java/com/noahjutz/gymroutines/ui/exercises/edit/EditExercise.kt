@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import com.noahjutz.gymroutines.data.domain.Exercise
 import com.noahjutz.gymroutines.ui.Routing
+import com.noahjutz.gymroutines.ui.TopLevelDestinations
 
 @Composable
 fun EditExercise(navTo: (Routing) -> Unit) {
@@ -30,7 +31,7 @@ fun EditExercise(navTo: (Routing) -> Unit) {
                 title = { Text(viewModel.exercise.name) },
                 navigationIcon = {
                     IconButton(
-                        onClick = { navTo(Routing.MainScreen) },
+                        onClick = { navTo(Routing.MainScreen(TopLevelDestinations.Exercises)) },
                         icon = { Icon(Icons.Filled.ArrowBack) }
                     )
                 }

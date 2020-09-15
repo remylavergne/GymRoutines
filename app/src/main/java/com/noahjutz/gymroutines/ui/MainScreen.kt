@@ -16,9 +16,12 @@ import com.noahjutz.gymroutines.ui.routines.RoutinesScreen
 enum class TopLevelDestinations { Routines, Exercises }
 
 @Composable
-fun Main(navTo: (Routing) -> Unit) {
+fun Main(
+    navTo: (Routing) -> Unit,
+    tab: TopLevelDestinations
+) {
     // TODO: Use compose-router here?
-    val screen = remember { mutableStateOf(TopLevelDestinations.Routines) }
+    val screen = remember { mutableStateOf(tab) }
     Scaffold(
         topBar = { TopAppBar(title = { Text("GymRoutines") }) },
         bottomBar = {

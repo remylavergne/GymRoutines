@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import com.noahjutz.gymroutines.ui.Routing
+import com.noahjutz.gymroutines.ui.TopLevelDestinations
 
 @Composable
 fun EditRoutine(navTo: (Routing) -> Unit) {
@@ -32,7 +33,7 @@ fun EditRoutine(navTo: (Routing) -> Unit) {
                 title = { Text(viewModel.routine.routine.name) },
                 navigationIcon = {
                     IconButton(
-                        onClick = { navTo(Routing.MainScreen) },
+                        onClick = { navTo(Routing.MainScreen(TopLevelDestinations.Routines)) },
                         icon = { Icon(Icons.Filled.ArrowBack) }
                     )
                 }

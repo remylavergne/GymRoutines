@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             MaterialTheme(colors = if (isSystemInDarkTheme()) darkColors() else lightColors()) {
                 Providers(AmbientBackPressHandler provides backPressHandler) {
-                    Content(Routing.MainScreen)
+                    Content(Routing.MainScreen(TopLevelDestinations.Routines))
                 }
             }
         }
@@ -46,12 +46,12 @@ class MainActivity : AppCompatActivity() {
 fun Content(defaultRouting: Routing) {
     Router(defaultRouting) { backStack ->
         val navTo = { routing: Routing ->
-            if (routing == Routing.MainScreen) backStack.newRoot(Routing.MainScreen)
+            if (routing is Routing.MainScreen) backStack.newRoot(Routing.MainScreen(routing.tab))
             else backStack.push(routing)
         }
         when (val routing = backStack.last()) {
             is Routing.MainScreen -> {
-                Main(navTo)
+                Main(navTo, routing.tab)
             }
             is Routing.EditExercise -> {
                 ArgsStorage.exerciseId = routing.exerciseId
@@ -66,7 +66,7 @@ fun Content(defaultRouting: Routing) {
 }
 
 sealed class Routing {
-    object MainScreen : Routing() // TODO: Pass which screen as parameter?
+    data class MainScreen(val tab: TopLevelDestinations) : Routing()
     data class EditRoutine(val routineId: Int) : Routing()
     data class EditExercise(val exerciseId: Int) : Routing()
 }
