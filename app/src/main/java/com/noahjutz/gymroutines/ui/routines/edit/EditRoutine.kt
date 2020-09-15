@@ -64,7 +64,10 @@ private fun BodyContent(
         )
         OutlinedTextField(
             value = description.value,
-            onValueChange = { description.value = it },
+            onValueChange = {
+                description.value = it
+                viewModel.setDescription(it)
+            },
             label = { Text("Description") },
             modifier = Modifier.padding(bottom = 16.dp, start = 16.dp, end = 16.dp).fillMaxWidth()
         )
