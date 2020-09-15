@@ -9,6 +9,13 @@ import com.noahjutz.gymroutines.util.provideRoutine
 
 class EditRoutineViewModel @ViewModelInject constructor(private val repository: Repository) :
     ViewModel() {
-    val routine: FullRoutine
+    var fullRoutine: FullRoutine
         get() = repository.provideRoutine(ArgsStorage.routineId)
+        set(fullRoutine) {
+            repository.insert(fullRoutine)
+        }
+
+    fun setName(name: String) {
+        fullRoutine = fullRoutine.apply { routine.name = name }
+    }
 }

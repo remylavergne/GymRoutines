@@ -38,10 +38,10 @@ import androidx.room.Relation
  * [Routine] with [ExerciseImpl]s
  */
 data class FullRoutine(
-    @Embedded val routine: Routine,
+    @Embedded var routine: Routine,
     @Relation(
         entity = ExerciseHolder::class,
         parentColumn = "routineId",
         entityColumn = "routineId"
-    ) val exercises: List<ExerciseImpl>
+    ) var exercises: List<ExerciseImpl>
 )

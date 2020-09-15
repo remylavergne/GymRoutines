@@ -30,7 +30,7 @@ fun EditRoutine(navTo: (Routing) -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(viewModel.routine.routine.name) },
+                title = { Text(viewModel.fullRoutine.routine.name) },
                 navigationIcon = {
                     IconButton(
                         onClick = { navTo(Routing.MainScreen(TopLevelDestinations.Routines)) },
@@ -50,12 +50,15 @@ fun EditRoutine(navTo: (Routing) -> Unit) {
 private fun BodyContent(
     viewModel: EditRoutineViewModel
 ) {
-    val name = remember { mutableStateOf(viewModel.routine.routine.name) }
-    val description = remember { mutableStateOf(viewModel.routine.routine.description) }
+    val name = remember { mutableStateOf(viewModel.fullRoutine.routine.name) }
+    val description = remember { mutableStateOf(viewModel.fullRoutine.routine.description) }
     ScrollableColumn { // TODO: fix performance issues
         TextField(
             value = name.value,
-            onValueChange = { name.value = it },
+            onValueChange = {
+                name.value = it
+                viewModel.setName(it)
+            },
             label = { Text("Name") },
             modifier = Modifier.padding(16.dp).fillMaxWidth()
         )
@@ -67,7 +70,7 @@ private fun BodyContent(
         )
         Divider(modifier = Modifier.padding(bottom = 16.dp))
         LazyColumnFor(
-            items = viewModel.routine.exercises,
+            items = viewModel.fullRoutine.exercises,
             modifier = Modifier.padding(start = 16.dp, end = 16.dp)
         ) { exercise ->
             Card(
