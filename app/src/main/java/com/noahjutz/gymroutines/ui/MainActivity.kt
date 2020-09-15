@@ -60,7 +60,7 @@ fun Content(defaultRouting: Routing) {
             }
             is Routing.EditExercise -> {
                 ArgsStorage.exerciseId = routing.exerciseId
-                EditExercise(navTo)
+                EditExercise(navBack)
             }
             is Routing.EditRoutine -> {
                 ArgsStorage.routineId = routing.routineId
