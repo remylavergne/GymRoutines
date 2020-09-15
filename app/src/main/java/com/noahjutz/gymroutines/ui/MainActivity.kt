@@ -51,6 +51,9 @@ fun Content(defaultRouting: Routing) {
             if (routing is Routing.MainScreen) backStack.newRoot(Routing.MainScreen(routing.tab))
             else backStack.push(routing)
         }
+        val navBack: () -> Unit = {
+            backStack.pop()
+        }
         when (val routing = backStack.last()) {
             is Routing.MainScreen -> {
                 Main(navTo, routing.tab)
@@ -64,7 +67,10 @@ fun Content(defaultRouting: Routing) {
                 EditRoutine(navTo)
             }
             is Routing.PickExercise -> {
-                PickExercise(navTo, routing.viewModel)
+                PickExercise(
+                    navBack = navBack,
+                    viewModel = routing.viewModel
+                )
             }
         }
     }

@@ -16,11 +16,10 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import com.noahjutz.gymroutines.data.domain.ExerciseHolder
 import com.noahjutz.gymroutines.data.domain.ExerciseImpl
-import com.noahjutz.gymroutines.ui.Routing
 
 @Composable
 fun PickExercise(
-    navTo: (Routing) -> Unit,
+    navBack: () -> Unit,
     viewModel: EditRoutineViewModel
 ) {
     Scaffold(
@@ -29,7 +28,7 @@ fun PickExercise(
                 title = { Text("Pick Exercise") },
                 navigationIcon = {
                     IconButton(
-                        onClick = {},
+                        onClick = navBack,
                         icon = { Icon(Icons.Filled.ArrowBack) }
                     )
                 }
