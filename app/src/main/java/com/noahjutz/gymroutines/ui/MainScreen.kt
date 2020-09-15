@@ -17,11 +17,10 @@ enum class TopLevelDestinations { Routines, Exercises }
 
 @Composable
 fun Main(
-    navTo: (Routing) -> Unit,
-    tab: TopLevelDestinations
+    navTo: (Routing) -> Unit
 ) {
     // TODO: Use compose-router here?
-    val screen = remember { mutableStateOf(tab) }
+    val screen = remember { mutableStateOf(TopLevelDestinations.Routines) }
     Scaffold(
         topBar = { TopAppBar(title = { Text("GymRoutines") }) },
         bottomBar = {

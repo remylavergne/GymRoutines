@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             MaterialTheme(colors = if (isSystemInDarkTheme()) darkColors() else lightColors()) {
                 Providers(AmbientBackPressHandler provides backPressHandler) {
-                    Content(Routing.MainScreen(TopLevelDestinations.Routines))
+                    Content(Routing.MainScreen)
                 }
             }
         }
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 fun Content(defaultRouting: Routing) {
     Router(defaultRouting) { backStack ->
         val navTo = { routing: Routing ->
-            if (routing is Routing.MainScreen) backStack.newRoot(Routing.MainScreen(routing.tab))
+            if (routing is Routing.MainScreen) backStack.newRoot(Routing.MainScreen)
             else backStack.push(routing)
         }
         val navBack: () -> Unit = {
@@ -56,7 +56,7 @@ fun Content(defaultRouting: Routing) {
         }
         when (val routing = backStack.last()) {
             is Routing.MainScreen -> {
-                Main(navTo, routing.tab)
+                Main(navTo)
             }
             is Routing.EditExercise -> {
                 ArgsStorage.exerciseId = routing.exerciseId
@@ -77,8 +77,8 @@ fun Content(defaultRouting: Routing) {
 }
 
 sealed class Routing {
+    object MainScreen : Routing()
     data class PickExercise(val viewModel: EditRoutineViewModel) : Routing()
-    data class MainScreen(val tab: TopLevelDestinations) : Routing()
     data class EditRoutine(val routineId: Int) : Routing()
     data class EditExercise(val exerciseId: Int) : Routing()
 }
