@@ -14,6 +14,8 @@ import com.github.zsoltk.compose.backpress.BackPressHandler
 import com.github.zsoltk.compose.router.Router
 import com.noahjutz.gymroutines.ui.exercises.edit.EditExercise
 import com.noahjutz.gymroutines.ui.routines.edit.EditRoutine
+import com.noahjutz.gymroutines.ui.routines.edit.EditRoutineViewModel
+import com.noahjutz.gymroutines.ui.routines.edit.PickExercise
 import com.noahjutz.gymroutines.util.ArgsStorage
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -61,11 +63,15 @@ fun Content(defaultRouting: Routing) {
                 ArgsStorage.routineId = routing.routineId
                 EditRoutine(navTo)
             }
+            is Routing.PickExercise -> {
+                PickExercise(navTo, routing.viewModel)
+            }
         }
     }
 }
 
 sealed class Routing {
+    data class PickExercise(val viewModel: EditRoutineViewModel) : Routing()
     data class MainScreen(val tab: TopLevelDestinations) : Routing()
     data class EditRoutine(val routineId: Int) : Routing()
     data class EditExercise(val exerciseId: Int) : Routing()

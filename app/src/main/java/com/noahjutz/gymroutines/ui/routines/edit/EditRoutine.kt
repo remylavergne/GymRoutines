@@ -40,7 +40,7 @@ fun EditRoutine(navTo: (Routing) -> Unit) {
             )
         },
         bodyContent = {
-            BodyContent(viewModel)
+            BodyContent(viewModel, navTo)
         }
     )
 }
@@ -48,7 +48,8 @@ fun EditRoutine(navTo: (Routing) -> Unit) {
 @Suppress("NAME_SHADOWING")
 @Composable
 private fun BodyContent(
-    viewModel: EditRoutineViewModel
+    viewModel: EditRoutineViewModel,
+    navTo: (Routing) -> Unit
 ) {
     val name = remember { mutableStateOf(viewModel.fullRoutine.routine.name) }
     val description = remember { mutableStateOf(viewModel.fullRoutine.routine.description) }
@@ -102,7 +103,9 @@ private fun BodyContent(
         }
         Button(
             content = { Text("Add Exercise") },
-            onClick = {},
+            onClick = {
+                navTo(Routing.PickExercise(viewModel))
+            },
             modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
                 .gravity(Alignment.CenterHorizontally)
         )
