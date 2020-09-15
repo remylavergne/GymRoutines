@@ -14,6 +14,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -97,7 +98,12 @@ private fun BodyContent(
                         IconButton(
                             icon = { Icon(Icons.Filled.Add) },
                             onClick = {},
-                            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                            modifier = Modifier.padding(end = 16.dp, bottom = 16.dp)
+                        )
+                        IconButton(
+                            icon = { Icon(Icons.Filled.Delete) },
+                            onClick = {},
+                            modifier = Modifier.padding(end = 16.dp)
                         )
                     }
                 }
