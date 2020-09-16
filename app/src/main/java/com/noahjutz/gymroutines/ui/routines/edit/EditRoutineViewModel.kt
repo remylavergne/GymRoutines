@@ -33,6 +33,10 @@ class EditRoutineViewModel @ViewModelInject constructor(private val repository: 
         updateExercises { add(exercise) }
     }
 
+    fun removeExercise(exercise: ExerciseImpl) {
+        updateExercises { remove(exercise) }
+    }
+
     private fun updateRoutine(action: FullRoutine.() -> Unit) {
         fullRoutine = fullRoutine.apply(action)
     }

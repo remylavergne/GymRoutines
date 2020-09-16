@@ -77,7 +77,7 @@ private fun BodyContent(
         )
         Divider(modifier = Modifier.padding(bottom = 16.dp))
         LazyColumnFor(
-            items = viewModel.fullRoutine.exercises,
+            items = viewModel.fullRoutine.exercises, // TODO: Make this list LiveData
             modifier = Modifier.padding(start = 16.dp, end = 16.dp)
         ) { exercise ->
             Card(
@@ -102,7 +102,7 @@ private fun BodyContent(
                         )
                         IconButton(
                             icon = { Icon(Icons.Filled.Delete) },
-                            onClick = {},
+                            onClick = { viewModel.removeExercise(exercise) },
                             modifier = Modifier.padding(end = 16.dp)
                         )
                     }
