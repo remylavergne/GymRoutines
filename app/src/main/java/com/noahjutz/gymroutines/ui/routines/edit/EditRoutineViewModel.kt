@@ -22,17 +22,15 @@ class EditRoutineViewModel @ViewModelInject constructor(private val repository: 
         get() = repository.exercises
 
     fun setName(name: String) {
-        fullRoutine = fullRoutine.apply { routine.name = name }
+        updateRoutine { routine.name = name }
     }
 
     fun setDescription(description: String) {
-        fullRoutine = fullRoutine.apply { routine.description = description }
+        updateRoutine { routine.description = description }
     }
 
     fun addExercise(exercise: ExerciseImpl) {
-        updateExercises {
-            add(exercise)
-        }
+        updateExercises { add(exercise) }
     }
 
     private fun updateRoutine(action: FullRoutine.() -> Unit) {
