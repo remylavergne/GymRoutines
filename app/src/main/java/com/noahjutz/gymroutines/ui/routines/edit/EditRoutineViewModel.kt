@@ -35,11 +35,13 @@ class EditRoutineViewModel @ViewModelInject constructor(private val repository: 
         }
     }
 
+    private fun updateRoutine(action: FullRoutine.() -> Unit) {
+        fullRoutine = fullRoutine.apply(action)
+    }
+
     private fun updateExercises(action: MutableList<ExerciseImpl>.() -> Unit) {
-        fullRoutine = fullRoutine.apply {
-            exercises = (exercises as? ArrayList ?: mutableListOf()).apply {
-                action()
-            }.toList()
+        updateRoutine {
+            exercises = (exercises as? ArrayList ?: mutableListOf()).apply(action).toList()
         }
     }
 }
