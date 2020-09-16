@@ -29,14 +29,17 @@ class EditRoutineViewModel @ViewModelInject constructor(private val repository: 
         fullRoutine = fullRoutine.apply { routine.description = description }
     }
 
-    fun setExercises(exercises: List<ExerciseImpl>) {
-        fullRoutine = fullRoutine.apply { this.exercises = exercises }
+    fun addExercise(exercise: ExerciseImpl) {
+        updateExercises {
+            add(exercise)
+        }
     }
 
-    fun addExercise(exercise: ExerciseImpl) {
-        setExercises(
-            (fullRoutine.exercises as? ArrayList ?: mutableListOf()).apply { add(exercise) }
-                .toList()
-        )
+    private fun updateExercises(action: MutableList<ExerciseImpl>.() -> Unit) {
+        fullRoutine = fullRoutine.apply {
+            exercises = (exercises as? ArrayList ?: mutableListOf()).apply {
+                action()
+            }.toList()
+        }
     }
 }
