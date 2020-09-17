@@ -28,13 +28,13 @@ fun Main(
                 BottomNavigationItem(
                     icon = { Icon(Icons.Filled.ViewAgenda) },
                     selected = screen.value == TopLevelDestinations.Routines,
-                    onSelect = { screen.value = TopLevelDestinations.Routines },
+                    onClick = { screen.value = TopLevelDestinations.Routines },
                     label = { Text("Routines") }
                 )
                 BottomNavigationItem(
                     icon = { Icon(Icons.Filled.DirectionsRun) },
                     selected = screen.value == TopLevelDestinations.Exercises,
-                    onSelect = { screen.value = TopLevelDestinations.Exercises },
+                    onClick = { screen.value = TopLevelDestinations.Exercises },
                     label = { Text("Exercises") }
                 )
             }
